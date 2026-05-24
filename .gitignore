@@ -1,0 +1,14 @@
+# Environments
+.env
+
+# Maven
+target/
+*.jar
+*.war
+*.ear
+*.class
+
+# IDEs
+.idea/
+*.iml
+.vscode/
