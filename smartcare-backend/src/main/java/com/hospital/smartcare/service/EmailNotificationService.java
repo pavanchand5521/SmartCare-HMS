@@ -28,8 +28,9 @@ public class EmailNotificationService {
             helper.setText(bodyContent, true); // true indicates HTML format
 
             mailSender.send(message);
-        } catch (MessagingException ex) {
-            throw new RuntimeException("Failed to send email via Gmail SMTP: " + ex.getMessage(), ex);
+        } catch (Exception ex) {
+            System.err.println("⚠️ Email notification failed (Cloud SMTP blocked/restricted): " + ex.getMessage());
         }
     }
 }
+
