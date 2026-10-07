@@ -1,5 +1,7 @@
 {
+  "outputDirectory": "dist/smartcare-frontend/browser",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
+
