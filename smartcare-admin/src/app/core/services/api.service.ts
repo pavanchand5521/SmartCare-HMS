@@ -45,9 +45,12 @@ export interface DashboardStats {
   cancelledAppointments: number;
 }
 
+import { environment } from '../../../environments/environment';
+
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private api = 'http://localhost:8080/api';
+  private api = `${environment.apiUrl}/api`;
+
 
   constructor(private http: HttpClient) {}
 
