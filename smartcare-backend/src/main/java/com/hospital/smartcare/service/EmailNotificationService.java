@@ -36,10 +36,10 @@ public class EmailNotificationService {
 
     private void sendViaResendApi(String toEmail, String subject, String bodyContent) {
         try {
-            String fromAddress = (senderEmail != null && senderEmail.contains("@")) ? senderEmail : "onboarding@resend.dev";
-            String fromField = "SmartCare <" + fromAddress + ">";
+            String fromField = "onboarding@resend.dev";
 
             String jsonBody = String.format(
+
                 "{\"from\":\"%s\",\"to\":[\"%s\"],\"subject\":%s,\"html\":%s}",
                 escapeJson(fromField),
                 escapeJson(toEmail.trim()),
