@@ -1,0 +1,35 @@
+﻿services:
+  - type: web
+    name: smartcare-backend
+    runtime: java
+    plan: free
+    buildCommand: mvn package -DskipTests -f pom.xml
+    startCommand: java -jar target/smartcare-1.0.0.jar
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: JAVA_VERSION
+        value: 17
+      - key: JWT_SECRET
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: smartcare-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: smartcare-db
+          property: user
+
+databases:
+  - name: smartcare-db
+    databaseName: smartcare_db
+    user: smartcare_user
+    plan: free
